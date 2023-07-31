@@ -1,4 +1,6 @@
-import SSRPokemonTable from "@/components/SSRPokemonTable"
+import SearchInput from "@/components/SearchInput"
+import Providers from "@/components/Provider"
+import Preloader from "@/components/Preloader"
 
 import { store } from '@/store'
 import { setStartupPokemon } from "@/store/searchSlice"
@@ -11,7 +13,12 @@ export default async function Home() {
   
   return (
     <main>
-      <SSRPokemonTable />
+      {/* Move data from server to client */}
+      <Preloader pokemons={data} />
+      
+      <Providers> {/* Which store to look into? */}
+        <SearchInput />
+      </Providers>
     </main>
   )
 }
